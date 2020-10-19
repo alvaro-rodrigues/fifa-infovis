@@ -1,15 +1,23 @@
+import os
+from random import randint
+import pandas as pd
+
+import flask
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
-import pandas as pd
+
 from src.transformations import transform1, transform2
 from src.plot import plot1, plot2
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
-app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+server = flask.Flask(__name__)
+server.secret_key = os.environ.get('secret_key', str(randint(0, 1000000)))
+app = dash.Dash(__name__, server=server, external_stylesheets=external_stylesheets)
+
 app.title = 'FIFA Data Visualization'
 
 df = pd.read_csv("./input/players_20.csv")
@@ -45,4 +53,4 @@ app.layout = html.Div(
 )
 
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.server.run(debug=True, threaded=True)
