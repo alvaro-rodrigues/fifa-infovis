@@ -9,8 +9,8 @@ import dash_html_components as html
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
-from src.transformations import transform1, transform2
-from src.plot import plot1, plot2
+from src.transformations import transform1, transform2, transform3, transform4
+from src.plot import plot1, plot2, plot3, plot4, plot5
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
@@ -20,9 +20,15 @@ app = dash.Dash(__name__, server=server, external_stylesheets=external_styleshee
 
 app.title = 'FIFA Data Visualization'
 
-df = pd.read_csv("./input/players_20.csv")
-fig1 = plot1(transform1(df))
-fig2 = plot2(transform2(df))
+dfs = {}
+for i in range(15, 21):
+    dfs[i] = pd.read_csv('./input/players_' + str(i) + '.csv')
+
+fig1 = plot1(transform1(dfs[20]))
+fig2 = plot2(transform2(dfs[20]))
+fig3 = plot3(transform3(dfs[15], dfs[16], dfs[17], dfs[18], dfs[19], dfs[20]))
+fig4 = plot4(transform4(dfs[15], dfs[16], dfs[17], dfs[18], dfs[19], dfs[20]))
+fig5 = plot5(dfs[20])
 
 app.layout = html.Div(
     html.Div([
@@ -48,6 +54,33 @@ app.layout = html.Div(
                     figure=fig2
                 )
             ], className='six columns')
+        ], className='row'),
+
+        html.Div([
+            html.Div([
+                dcc.Graph(
+                    id='graph3',
+                    figure=fig3
+                )
+            ])
+        ], className='row'),
+
+        html.Div([
+            html.Div([
+                dcc.Graph(
+                    id='graph4',
+                    figure=fig4
+                )
+            ])
+        ], className='row'),
+
+        html.Div([
+            html.Div([
+                dcc.Graph(
+                    id='graph5',
+                    figure=fig5
+                )
+            ])
         ], className='row')
     ])
 )
