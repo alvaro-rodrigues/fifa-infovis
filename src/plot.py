@@ -165,195 +165,50 @@ def plot2(df_scatter):
 
     return fig
 
-def plot3(pots):
-
-    pot_messi = pots[0]
-    pot_cris = pots[1]
-    pot_lewa = pots[2]
-    pot_salah = pots[3]
-    pot_mane = pots[4]
-    pot_ber = pots[5]
-    pot_mar = pots[6]
-    pot_ali = pots[7]
-    pot_mba = pots[8]
-    pot_dijk = pots[9]
-    pot_mean = pots[10]
+def plot3(overs):
 
     x = [15, 16, 17, 18, 19, 20]
 
-    fig = make_subplots(rows = 2, cols = 5, vertical_spacing= 0.1, subplot_titles = ('R. Mahrez', 'B. Silva', 'R. Lewandowski', 'Alisson','K. Mbappé',
-                                                                                     'M. Salah', 'S. Mané', 'C. Ronaldo', 'V. van Dijk', 'L. Messi'
+    subplots = {0 : {'row' : 1, 'col' : 1},
+                1 : {'row' : 1, 'col' : 2},
+                2 : {'row' : 1, 'col' : 3},
+                3 : {'row' : 1, 'col' : 4},
+                4 : {'row' : 1, 'col' : 5},
+                5 : {'row' : 2, 'col' : 1},
+                6 : {'row' : 2, 'col' : 2},
+                7 : {'row' : 2, 'col' : 3},
+                8 : {'row' : 2, 'col' : 4},
+                9 : {'row' : 2, 'col' : 5}}
+
+    color = ['rgb(255, 217, 47)', 'rgb(255, 217, 47)', 'rgb(255, 217, 47)', 'rgb(255, 127, 0)', 'rgb(255, 127, 0)', 
+             'rgb(255, 127, 0)', 'rgb(255, 127, 0)', 'rgb(166, 118, 29)', 'rgb(102, 102, 102)', 'goldenrod']
+
+    fig = make_subplots(rows = 2, cols = 5, vertical_spacing= 0.1, subplot_titles = (list(overs.keys())[:-1]
                                                                                     ))
+    for i, key in enumerate(list(overs.keys())[:-1]):
 
-    fig.add_trace(go.Scatter(
-            x = x,
-            y= pot_mar,
-            mode = 'markers+lines',
-            line_color= 'rgb(255, 217, 47)',
-            name= 'Mahrez',
-            showlegend= False), row=1, col=1)
+        fig.add_trace(go.Scatter(
+                x = x,
+                y= overs[key],
+                mode = 'markers+lines',
+                line_color=color[i],
+                name= 'Mahrez',
+                showlegend= False),
+            row = subplots[i]['row'],
+            col = subplots[i]['col']
+            )
 
-    fig.add_trace(go.Scatter(
-            x = x,
-            y= pot_mean,
-            mode = 'markers+lines',
-            line_color= 'rgb(179, 179, 179)',
-            line_width = 1,
-            name= 'Mean',
-            showlegend= False), row=1, col=1)
-
-    fig.add_trace(go.Scatter(
-            x = x,
-            y= pot_ber,
-            mode = 'markers+lines',
-            line_color= 'rgb(255, 217, 47)',
-            name= 'Silva',
-            showlegend= False), row=1, col=2)
-
-    fig.add_trace(go.Scatter(
-            x = x,
-            y= pot_mean,
-            mode = 'markers+lines',
-            line_color= 'rgb(179, 179, 179)',
-            line_width = 1,
-            name= 'Mean',
-            showlegend= False), row=1, col=2)
-
-    fig.add_trace(go.Scatter(
-            x = x,
-            y= pot_lewa,
-            mode = 'markers+lines',
-            line_color= 'rgb(255, 217, 47)',
-            name= 'fLewandowski',
-            showlegend= False), row=1, col=3)
-
-    fig.add_trace(go.Scatter(
-            x = x,
-            y= pot_mean,
-            mode = 'markers+lines',
-            line_color= 'rgb(179, 179, 179)',
-            line_width = 1,
-            name= 'Mean',
-            showlegend= False), row=1, col=3)
-
-    fig.add_trace(go.Scatter(
-            x = x,
-            y= pot_ali,
-            mode = 'markers+lines',
-            line_color= 'rgb(255, 127, 0)',
-            name= 'Alisson',
-            showlegend= False), row=1, col=4)
-
-    fig.add_trace(go.Scatter(
-            x = x,
-            y= pot_mean,
-            mode = 'markers+lines',
-            line_color= 'rgb(179, 179, 179)',
-            line_width = 1,
-            name= 'Mean',
-            showlegend= False), row=1, col=4)
-
-    fig.add_trace(go.Scatter(
-            x = x,
-            y= pot_mba,
-            mode = 'markers+lines',
-            line_color= 'rgb(255, 127, 0)',
-            name= 'Mbappe',
-            showlegend= False), row=1, col=5)
-
-    fig.add_trace(go.Scatter(
-            x = x,
-            y= pot_mean,
-            mode = 'markers+lines',
-            line_color= 'rgb(179, 179, 179)',
-            line_width = 1,
-            name= 'Mean',
-            showlegend= False), row=1, col=5)
-
-    fig.add_trace(go.Scatter(
-            x = x,
-            y= pot_salah,
-            mode = 'markers+lines',
-            line_color= 'rgb(255, 127, 0)',
-            name= 'Salah',
-            showlegend= False), row=2, col=1)
-
-    fig.add_trace(go.Scatter(
-            x = x,
-            y= pot_mean,
-            mode = 'markers+lines',
-            line_color= 'rgb(179, 179, 179)',
-            line_width = 1,
-            name= 'Mean',
-            showlegend= False), row=2, col=1)
-
-    fig.add_trace(go.Scatter(
-            x = x,
-            y= pot_mane,
-            mode = 'markers+lines',
-            line_color= 'rgb(255, 127, 0)',
-            name= 'Mane',
-            showlegend= False), row=2, col=2)
-
-    fig.add_trace(go.Scatter(
-            x = x,
-            y= pot_mean,
-            mode = 'markers+lines',
-            line_color= 'rgb(179, 179, 179)',
-            line_width = 1,
-            name= 'Mean',
-            showlegend= False), row=2, col=2)
-
-    fig.add_trace(go.Scatter(
-            x = x,
-            y= pot_cris,
-            mode = 'markers+lines',
-            line_color= 'rgb(166, 118, 29)',
-            name= 'Ronaldo',
-            showlegend= False), row=2, col=3)
-
-    fig.add_trace(go.Scatter(
-            x = x,
-            y= pot_mean,
-            mode = 'markers+lines',
-            line_color= 'rgb(179, 179, 179)',
-            line_width = 1,
-            name= 'Mean',
-            showlegend= False), row=2, col=3)
-
-    fig.add_trace(go.Scatter(
-            x = x,
-            y= pot_dijk,
-            mode = 'markers+lines',
-            line_color= 'rgb(102, 102, 102)',
-            name= 'van Dijk',
-            showlegend= False), row=2, col=4)
-
-    fig.add_trace(go.Scatter(
-            x = x,
-            y= pot_mean,
-            mode = 'markers+lines',
-            line_color= 'rgb(179, 179, 179)',
-            line_width = 1,
-            name= 'Mean',
-            showlegend= False), row=2, col=4)
-
-    fig.add_trace(go.Scatter(
-            x = x,
-            y= pot_messi,
-            mode = 'markers+lines',
-            line_color= 'goldenrod',
-            name= 'Messi',
-            showlegend= False), row=2, col=5)
-
-    fig.add_trace(go.Scatter(
-            x = x,
-            y= pot_mean,
-            mode = 'markers+lines',
-            line_color= 'rgb(179, 179, 179)',
-            line_width = 1,
-            name= 'Mean',
-            showlegend= False), row=2, col=5)
+        fig.add_trace(go.Scatter(
+                x = x,
+                y= overs['mean'],
+                mode = 'markers+lines',
+                line_color= 'rgb(179, 179, 179)',
+                line_width = 1,
+                name= 'Mean',
+                showlegend= False),
+            row = subplots[i]['row'],
+            col = subplots[i]['col']
+            )
 
     fig.update_layout(
         width=1500,
@@ -368,194 +223,49 @@ def plot3(pots):
 
 def plot4(pots):
 
-    pot_messi = pots[0]
-    pot_cris = pots[1]
-    pot_lewa = pots[2]
-    pot_salah = pots[3]
-    pot_mane = pots[4]
-    pot_ber = pots[5]
-    pot_mar = pots[6]
-    pot_ali = pots[7]
-    pot_mba = pots[8]
-    pot_dijk = pots[9]
-    pot_mean = pots[10]
-
-
     x = [15, 16, 17, 18, 19, 20]
 
-    fig = make_subplots(rows = 2, cols = 5,vertical_spacing= 0.1, subplot_titles = ('R. Mahrez', 'B. Silva', 'R. Lewandowski', 'Alisson', 'K. Mbappé',
-                                                                                    'M. Salah', 'S. Mané', 'C. Ronaldo', 'V. van Dijk', 'L. Messi'
+    subplots = {0 : {'row' : 1, 'col' : 1},
+                1 : {'row' : 1, 'col' : 2},
+                2 : {'row' : 1, 'col' : 3},
+                3 : {'row' : 1, 'col' : 4},
+                4 : {'row' : 1, 'col' : 5},
+                5 : {'row' : 2, 'col' : 1},
+                6 : {'row' : 2, 'col' : 2},
+                7 : {'row' : 2, 'col' : 3},
+                8 : {'row' : 2, 'col' : 4},
+                9 : {'row' : 2, 'col' : 5}}
+
+    color = ['rgb(255, 217, 47)', 'rgb(255, 217, 47)', 'rgb(255, 217, 47)', 'rgb(255, 127, 0)', 'rgb(255, 127, 0)', 
+             'rgb(255, 127, 0)', 'rgb(255, 127, 0)', 'rgb(166, 118, 29)', 'rgb(102, 102, 102)', 'goldenrod']
+
+    fig = make_subplots(rows = 2, cols = 5,vertical_spacing= 0.1, subplot_titles = (list(pots.keys())[:-1]
                                                                                     ))
 
-    fig.add_trace(go.Scatter(
-            x = x,
-            y= pot_mar,
-            mode = 'markers+lines',
-            line_color= 'rgb(255, 217, 47)',
-            name= 'Mahrez',
-            showlegend= False), row=1, col=1)
+    for i, key in enumerate(list(pots.keys())[:-1]):
+    
+        fig.add_trace(go.Scatter(
+                x = x,
+                y= pots[key],
+                mode = 'markers+lines',
+                line_color=color[i],
+                name=key,
+                showlegend= False),
+            row = subplots[i]['row'],
+            col = subplots[i]['col']
+            )
 
-    fig.add_trace(go.Scatter(
-            x = x,
-            y= pot_mean,
-            mode = 'markers+lines',
-            line_color= 'rgb(179, 179, 179)',
-            line_width = 1,
-            name= 'Mean',
-            showlegend= False), row=1, col=1)
-
-    fig.add_trace(go.Scatter(
-            x = x,
-            y= pot_ber,
-            mode = 'markers+lines',
-            line_color= 'rgb(255, 217, 47)',
-            name= 'Silva',
-            showlegend= False), row=1, col=2)
-
-    fig.add_trace(go.Scatter(
-            x = x,
-            y= pot_mean,
-            mode = 'markers+lines',
-            line_color= 'rgb(179, 179, 179)',
-            line_width = 1,
-            name= 'Mean',
-            showlegend= False), row=1, col=2)
-
-    fig.add_trace(go.Scatter(
-            x = x,
-            y= pot_lewa,
-            mode = 'markers+lines',
-            line_color= 'rgb(255, 217, 47)',
-            name= 'fLewandowski',
-            showlegend= False), row=1, col=3)
-
-    fig.add_trace(go.Scatter(
-            x = x,
-            y= pot_mean,
-            mode = 'markers+lines',
-            line_color= 'rgb(179, 179, 179)',
-            line_width = 1,
-            name= 'Mean',
-            showlegend= False), row=1, col=3)
-
-    fig.add_trace(go.Scatter(
-            x = x,
-            y= pot_ali,
-            mode = 'markers+lines',
-            line_color= 'rgb(255, 127, 0)',
-            name= 'Alisson',
-            showlegend= False), row=1, col=4)
-
-    fig.add_trace(go.Scatter(
-            x = x,
-            y= pot_mean,
-            mode = 'markers+lines',
-            line_color= 'rgb(179, 179, 179)',
-            line_width = 1,
-            name= 'Mean',
-            showlegend= False), row=1, col=4)
-
-    fig.add_trace(go.Scatter(
-            x = x,
-            y= pot_mba,
-            mode = 'markers+lines',
-            line_color= 'rgb(255, 127, 0)',
-            name= 'Mbappe',
-            showlegend= False), row=1, col=5)
-
-    fig.add_trace(go.Scatter(
-            x = x,
-            y= pot_mean,
-            mode = 'markers+lines',
-            line_color= 'rgb(179, 179, 179)',
-            line_width = 1,
-            name= 'Mean',
-            showlegend= False), row=1, col=5)
-
-    fig.add_trace(go.Scatter(
-            x = x,
-            y= pot_salah,
-            mode = 'markers+lines',
-            line_color= 'rgb(255, 127, 0)',
-            name= 'Salah',
-            showlegend= False), row=2, col=1)
-
-    fig.add_trace(go.Scatter(
-            x = x,
-            y= pot_mean,
-            mode = 'markers+lines',
-            line_color= 'rgb(179, 179, 179)',
-            line_width = 1,
-            name= 'Mean',
-            showlegend= False), row=2, col=1)
-
-    fig.add_trace(go.Scatter(
-            x = x,
-            y= pot_mane,
-            mode = 'markers+lines',
-            line_color= 'rgb(255, 127, 0)',
-            name= 'Mane',
-            showlegend= False), row=2, col=2)
-
-    fig.add_trace(go.Scatter(
-            x = x,
-            y= pot_mean,
-            mode = 'markers+lines',
-            line_color= 'rgb(179, 179, 179)',
-            line_width = 1,
-            name= 'Mean',
-            showlegend= False), row=2, col=2)
-
-    fig.add_trace(go.Scatter(
-            x = x,
-            y= pot_cris,
-            mode = 'markers+lines',
-            line_color= 'rgb(166, 118, 29)',
-            name= 'Ronaldo',
-            showlegend= False), row=2, col=3)
-
-    fig.add_trace(go.Scatter(
-            x = x,
-            y= pot_mean,
-            mode = 'markers+lines',
-            line_color= 'rgb(179, 179, 179)',
-            line_width = 1,
-            name= 'Mean',
-            showlegend= False), row=2, col=3)
-
-    fig.add_trace(go.Scatter(
-            x = x,
-            y= pot_dijk,
-            mode = 'markers+lines',
-            line_color= 'rgb(102, 102, 102)',
-            name= 'van Dijk',
-            showlegend= False), row=2, col=4)
-
-    fig.add_trace(go.Scatter(
-            x = x,
-            y= pot_mean,
-            mode = 'markers+lines',
-            line_color= 'rgb(179, 179, 179)',
-            line_width = 1,
-            name= 'Mean',
-            showlegend= False), row=2, col=4)
-
-    fig.add_trace(go.Scatter(
-            x = x,
-            y= pot_messi,
-            mode = 'markers+lines',
-            line_color= 'goldenrod',
-            name= 'Messi',
-            showlegend= False), row=2, col=5)
-
-    fig.add_trace(go.Scatter(
-            x = x,
-            y= pot_mean,
-            mode = 'markers+lines',
-            line_color= 'rgb(179, 179, 179)',
-            line_width = 1,
-            name= 'Mean',
-            showlegend= False), row=2, col=5)
+        fig.add_trace(go.Scatter(
+                x = x,
+                y= pots['mean'],
+                mode = 'markers+lines',
+                line_color= 'rgb(179, 179, 179)',
+                line_width = 1,
+                name= 'Mean',
+                showlegend= False),
+            row = subplots[i]['row'],
+            col = subplots[i]['col']
+            )
 
     fig.update_layout(
         width=1500,
@@ -588,21 +298,22 @@ def plot5(df20):
             df20.loc[9, 'overall'], df20.loc[39, 'overall'], df20.loc[1, 'overall'], df20.loc[7, 'overall'], df20.loc[0, 'overall']]
 
     overy = ['R. Mahrez',
-    'B. Silva',
-    'S. Mané',
-    'R. Lewandowski',
-    'Alisson',
-    'K. Mbappé',
-    'M. Salah',
-    'V. van Dijk',
-    'C. Ronaldo',
-    'L. Messi']
+             'B. Silva',
+             'S. Mané',
+             'R. Lewandowski',
+             'Alisson',
+             'K. Mbappé',
+             'M. Salah',
+             'V. van Dijk',
+             'C. Ronaldo',
+             'L. Messi']
 
     overx.sort()
 
-    color = ['rgb(255, 217, 47)', 'rgb(255, 217, 47)', 'rgb(255, 217, 47)', 'rgb(255, 127, 0)', 'rgb(255, 127, 0)', 'rgb(255, 127, 0)', 'rgb(255, 127, 0)', 'rgb(166, 118, 29)', 'rgb(102, 102, 102)', 'goldenrod']
+    color = ['rgb(255, 217, 47)', 'rgb(255, 217, 47)', 'rgb(255, 217, 47)', 'rgb(255, 127, 0)', 'rgb(255, 127, 0)', 
+             'rgb(255, 127, 0)', 'rgb(255, 127, 0)', 'rgb(166, 118, 29)', 'rgb(102, 102, 102)', 'goldenrod']
 
-    trace = go.Bar(
+    fig.add_trace(go.Bar(
         y=overy,
         x=overx,
         name='Overal',
@@ -610,83 +321,32 @@ def plot5(df20):
         orientation='h',
         xaxis='x2', yaxis='y2',
         marker=dict(
-            color=color)
+            color=color))
     )
 
-    fig.add_traces([trace])
+    overy = overy[::-1]
+    color = color[::-1]
 
-    trace1 = go.Scatter(x=['FIFA', 'Bola de Ouro'], y=[1, 1],
-                        marker=dict(color='goldenrod'),
-                        name='L. Messi',
-                        showlegend= False,
-                        line_width = 3,
-                        xaxis='x3', yaxis='y3')
+    y = {0 : [1, 1],
+         1 : [2, 3],
+         2 : [3, 2],
+         3 : [4, 5],
+         4 : [5, 6],
+         5 : [6, 7],
+         6 : [7, 8],
+         7 : [8, 4],
+         8 : [9, 9],
+         9 : [10, 10]}
 
-    trace2 = go.Scatter(x=['FIFA', 'Bola de Ouro'], y=[2, 3],
-                        marker=dict(color='rgb(102, 102, 102)'),
-                        name='C. Ronaldo',
-                        showlegend= False,
-                        line_width = 3,
-                        xaxis='x3', yaxis='y3')
+    for i, name in enumerate(overy):
 
-    trace3 = go.Scatter(x=['FIFA', 'Bola de Ouro'], y=[3, 2],
-                        marker=dict(color='rgb(166, 118, 29)'),
-                        name='V. van Dijk',
-                        showlegend= False,
-                        line_width = 3,
-                        xaxis='x3', yaxis='y3')
-
-    trace4 = go.Scatter(x=['FIFA', 'Bola de Ouro'], y=[4, 5],
-                        marker=dict(color='rgb(255, 127, 0)'),
-                        name='M. Salah',
-                        showlegend= False,
-                        line_width = 3,
-                        xaxis='x3', yaxis='y3')
-
-    trace5 = go.Scatter(x=['FIFA', 'Bola de Ouro'], y=[5, 6],
-                        marker=dict(color='rgb(255, 127, 0)'),
-                        name='K. Mbappé',
-                        showlegend= False,
-                        line_width = 3,
-                        xaxis='x3', yaxis='y3')
-
-    trace6 = go.Scatter(x=['FIFA', 'Bola de Ouro'], y=[6, 7],
-                        marker=dict(color='rgb(255, 127, 0)'),
-                        name='Alisson',
-                        showlegend= False,
-                        line_width = 3,
-                        xaxis='x3', yaxis='y3')
-
-    trace7 = go.Scatter(x=['FIFA', 'Bola de Ouro'], y=[7, 8],
-                        marker=dict(color='rgb(255, 127, 0)'),
-                        name='R. Lewandowski',
-                        showlegend= False,
-                        line_width = 3,
-                        xaxis='x3', yaxis='y3')
-
-    trace8 = go.Scatter(x=['FIFA', 'Bola de Ouro'], y=[8, 4],
-                        marker=dict(color='rgb(255, 217, 47)'),
-                        name='S. Mané',
-                        showlegend= False,
-                        line_width = 3,
-                        xaxis='x3', yaxis='y3')
-
-    trace9 = go.Scatter(x=['FIFA', 'Bola de Ouro'], y=[9, 9],
-                        marker=dict(color='rgb(255, 217, 47)'),
-                        name='B. Siilva',
-                        showlegend= False,
-                        line_width = 3,
-                        xaxis='x3', yaxis='y3')
-
-    trace10 = go.Scatter(x=['FIFA', 'Bola de Ouro'], y=[10, 10],
-                        marker=dict(color='rgb(255, 217, 47)'),
-                        name='R. Mahrez',
-                        showlegend= False,
-                        line_width = 3,
-                        xaxis='x3', yaxis='y3')
-
-    fig.add_traces([trace1, trace2, trace3, trace4, trace5, trace6, trace7, trace8, trace9, trace10])
-
+        fig.add_trace(go.Scatter(x=['FIFA', 'Bola de Ouro'], y=y[i],
+                            marker=dict(color=color[i]),
+                            name=name,
+                            showlegend= False,
+                            line_width = 3,
+                            xaxis='x3', yaxis='y3')
+                     )
 
     # initialize xaxis2 and yaxis2
     fig['layout']['xaxis2'] = {}

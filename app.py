@@ -24,8 +24,8 @@ for i in range(15, 21):
 
 fig1 = plot1(transform1(dfs[20]))
 fig2 = plot2(transform2(dfs[20]))
-fig3 = plot3(transform3(dfs[15], dfs[16], dfs[17], dfs[18], dfs[19], dfs[20]))
-fig4 = plot4(transform4(dfs[15], dfs[16], dfs[17], dfs[18], dfs[19], dfs[20]))
+fig3 = plot3(transform3(dfs))
+fig4 = plot4(transform4(dfs))
 fig5 = plot5(dfs[20])
 fig6 = plot6(transform6(dfs[20]))
 
