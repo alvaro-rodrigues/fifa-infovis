@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
-import plotly.graph_objects as go
-from plotly.subplots import make_subplots
+from sklearn.decomposition import PCA
+from sklearn.preprocessing import StandardScaler
 
 def transform1(df20):
 
@@ -134,3 +134,44 @@ def transform4(df15, df16, df17, df18, df19, df20):
     pots = [pot_messi, pot_cris, pot_lewa, pot_salah, pot_mane, pot_ber, pot_mar, pot_ali, pot_mba, pot_dijk, pot_mean]
 
     return pots
+
+def transform6(players_20):
+
+    players_20 = players_20.replace(to_replace ='\-[0-9]', value = '', regex = True)
+    
+    some_val = ["height_cm","weight_kg","overall","potential","value_eur","wage_eur","skill_moves","shooting","passing",
+                "dribbling","attacking_volleys","movement_reactions","movement_balance","mentality_aggression","mentality_interceptions",
+                "mentality_positioning","mentality_penalties","defending","defending_marking","defending_standing_tackle","defending_sliding_tackle"]
+
+    corr_matrix = players_20[some_val].corr(method= "spearman").round(decimals=2)
+
+    return corr_matrix
+
+def transform7_8(players_20):
+
+    players_20 = players_20.replace(to_replace ='\-[0-9]', value = '', regex = True)
+
+    pca_val = ["height_cm","weight_kg","overall","potential","value_eur","wage_eur","skill_moves","shooting","passing",
+               "dribbling","defending","attacking_volleys", "movement_reactions","movement_balance","mentality_aggression",
+               "mentality_interceptions","gk_diving","gk_handling","gk_kicking","gk_reflexes","gk_speed","gk_positioning",
+               "goalkeeping_diving","goalkeeping_handling","goalkeeping_kicking","goalkeeping_positioning","goalkeeping_reflexes",
+               "mentality_positioning","mentality_penalties","defending_marking","defending_standing_tackle","defending_sliding_tackle"]
+
+    pca = PCA(n_components=3, svd_solver='full')
+    X = players_20[pca_val]
+    X = X.fillna(X.mean())
+    X = StandardScaler().fit_transform(X)
+
+    principalComponents = pca.fit_transform( X)
+    principalDf = pd.DataFrame(data = principalComponents, columns = ['Componente Principal I','Componente Principal II','Componente Principal III'])
+
+    postions = []
+
+    for position in players_20['player_positions']:
+        postions.append(position.split(",")[0])
+
+
+    principalDf['position'] = postions
+    principalDf["short_name"]  = players_20["short_name"] 
+
+    return principalDf

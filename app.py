@@ -6,11 +6,9 @@ import flask
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
-import plotly.graph_objects as go
-from plotly.subplots import make_subplots
 
-from src.transformations import transform1, transform2, transform3, transform4
-from src.plot import plot1, plot2, plot3, plot4, plot5
+from src.transformations import transform1, transform2, transform3, transform4, transform6, transform7_8
+from src.plot import plot1, plot2, plot3, plot4, plot5, plot6, plot7, plot8
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
@@ -29,6 +27,12 @@ fig2 = plot2(transform2(dfs[20]))
 fig3 = plot3(transform3(dfs[15], dfs[16], dfs[17], dfs[18], dfs[19], dfs[20]))
 fig4 = plot4(transform4(dfs[15], dfs[16], dfs[17], dfs[18], dfs[19], dfs[20]))
 fig5 = plot5(dfs[20])
+fig6 = plot6(transform6(dfs[20]))
+
+trfs7_8 = transform7_8(dfs[20])
+fig7 = plot7(trfs7_8)
+fig8 = plot8(trfs7_8)
+
 
 app.layout = html.Div(
     html.Div([
@@ -79,6 +83,33 @@ app.layout = html.Div(
                 dcc.Graph(
                     id='graph5',
                     figure=fig5
+                )
+            ])
+        ], className='row'),
+
+        html.Div([
+            html.Div([
+                dcc.Graph(
+                    id='graph6',
+                    figure=fig6
+                )
+            ])
+        ], className='row'),
+
+        html.Div([
+            html.Div([
+                dcc.Graph(
+                    id='graph7',
+                    figure=fig7
+                )
+            ])
+        ], className='row'),
+
+        html.Div([
+            html.Div([
+                dcc.Graph(
+                    id='graph8',
+                    figure=fig8
                 )
             ])
         ], className='row')

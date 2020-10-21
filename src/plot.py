@@ -3,6 +3,7 @@ import pandas as pd
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import plotly.figure_factory as ff
+import plotly.express as px
 
 def plot1(df_lst):
 
@@ -717,4 +718,35 @@ def plot5(df20):
     fig.layout.update({'title': '<b>FIFA 20 x Bola de Ouro 2019<b>'}, title_font_size = 35, width=1400,
         height=700 )
 
+    return fig
+
+def plot6(corr_matrix):
+
+    fig = ff.create_annotated_heatmap(z=np.asmatrix(corr_matrix).tolist(),
+                                      x=list(corr_matrix.columns),
+                                      y=list(corr_matrix.columns),
+                                      colorscale='Viridis')
+
+    return fig
+
+def plot7(principalDf):
+
+    color_blind = ['#377EB8', '#FF7F00', '#4DAF4A','#F781BF', '#A65628', 
+                   '#984EA3','#999999', '#f2bdd8', '#DEDE00', "#E69F00",
+                   "#56B4E9", "#009E73", "#d296f2", "#000000",  "#CC79A7"]
+    
+    fig = px.scatter_3d(principalDf, x='Componente Principal I', y='Componente Principal II', z='Componente Principal III' ,size_max=14,
+                        color="position", color_discrete_sequence=color_blind, hover_name="short_name")
+                        
+    return fig
+
+def plot8(principalDf):
+
+    color_blind = ['#377EB8', '#FF7F00', '#4DAF4A','#F781BF', '#A65628', 
+                   '#984EA3','#999999', '#f2bdd8', '#DEDE00', "#E69F00",
+                   "#56B4E9", "#009E73", "#d296f2", "#000000",  "#CC79A7"]
+    
+    fig = px.scatter(principalDf , x='Componente Principal I', y='Componente Principal II',
+                     color= "position", color_discrete_sequence=color_blind,hover_name="short_name")
+                        
     return fig
