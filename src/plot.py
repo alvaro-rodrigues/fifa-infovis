@@ -4,6 +4,8 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import plotly.figure_factory as ff
 import plotly.express as px
+import matplotlib as mpl
+import matplotlib.cm
 
 def plot1(df_lst):
 
@@ -409,4 +411,84 @@ def plot8(principalDf):
     fig = px.scatter(principalDf , x='Componente Principal I', y='Componente Principal II',
                      color= "position", color_discrete_sequence=color_blind,hover_name="short_name")
                         
+    return fig
+
+def plot9(df):
+
+    paises = ['Argentina', 'Brazil', 'England', 'Germany']
+    df_reduzido = df.loc[(df['team_jersey_number'] <= 30) & (df['nationality'].isin(paises))]
+
+    fig = px.histogram(df_reduzido, 
+                   x="team_jersey_number", 
+                   color="nationality", 
+                   barmode="group", 
+                   histnorm='probability',
+                   color_discrete_sequence=px.colors.qualitative.Pastel,
+                   labels={
+                       'team_jersey_number': 'Número no uniforme',
+                       'nationality': 'País'
+                   },
+                   title='Uso dos diferentes números no uniforme agrupado por países')
+
+    fig.update_layout(bargap=0.5)
+
+    return fig
+
+def plot10(df):
+
+    df = df.sort_values("age")
+    sw = df['age'].sort_values()
+    sw_01 = (sw - sw.min()) / (sw.max() - sw.min())
+    sw_colors = {n: mpl.colors.rgb2hex(c) for n, c in zip(sw, matplotlib.cm.viridis(sw_01))}
+
+    fig = px.box(df,
+                x="age",
+                y="pace",
+                color="age",
+                category_orders={'sepal_width': sw.to_list()[::-1]},
+                color_discrete_map=sw_colors,
+                labels={
+                        'pace': 'Ritmo',
+                        'age': 'Idade'
+                    },
+                title="Influência da idade no ritmo do atleta")
+
+    fig.update_yaxes(rangemode="tozero")
+
+    return fig
+
+def plot11(df):
+
+    df = df.sort_values("age")
+    df['position'] = df['player_positions'].str.split(",", n = 1, expand = True)[0]
+
+    fig = px.violin(df, 
+                x="position",
+                y="height_cm",
+                color="position",
+                labels={
+                       'height_cm': 'Altura (em cm)',
+                       'position': 'Posição'
+                   },
+                title="Relação entre altura e posição",
+                color_discrete_map={
+                "GK": "#4C78A8",
+                "CB": "#72B7B2",
+                "RB": "#72B7B2",
+                "LB": "#72B7B2",
+                "RWB": "#72B7B2",
+                "LWB": "#72B7B2",
+                "CDM": "#E45756",
+                "CM": "#E45756",
+                "CAM": "#E45756",
+                "LM": "#E45756",
+                "RM": "#E45756",
+                "CF": "#F58518",
+                "LW": "#F58518",
+                "RW": "#F58518",
+                "ST": "#F58518"})
+
+    fig.update_xaxes(categoryarray = ["GK", "CB", "RB", "LB", "RWB", "LWB", "CDM", "CM", 
+                                      "CAM", "LM", "RM", "CF", "LW", "RW", "ST"])
+
     return fig

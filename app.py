@@ -8,7 +8,7 @@ import dash_core_components as dcc
 import dash_html_components as html
 
 from src.transformations import transform1, transform2, transform3, transform4, transform6, transform7_8
-from src.plot import plot1, plot2, plot3, plot4, plot5, plot6, plot7, plot8
+from src.plot import plot1, plot2, plot3, plot4, plot5, plot6, plot7, plot8, plot9, plot10, plot11
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
@@ -30,9 +30,12 @@ fig5 = plot5(dfs[20])
 fig6 = plot6(transform6(dfs[20]))
 
 trfs7_8 = transform7_8(dfs[20])
+
 fig7 = plot7(trfs7_8)
 fig8 = plot8(trfs7_8)
-
+fig9 = plot9(dfs[20])
+fig10 = plot10(dfs[20])
+fig11 = plot11(dfs[20])
 
 app.layout = html.Div(
     html.Div([
@@ -110,6 +113,33 @@ app.layout = html.Div(
                 dcc.Graph(
                     id='graph8',
                     figure=fig8
+                )
+            ])
+        ], className='row'),
+
+        html.Div([
+            html.Div([
+                dcc.Graph(
+                    id='graph9',
+                    figure=fig9
+                )
+            ])
+        ], className='row'),
+
+        html.Div([
+            html.Div([
+                dcc.Graph(
+                    id='graph10',
+                    figure=fig10
+                )
+            ])
+        ], className='row'),
+
+        html.Div([
+            html.Div([
+                dcc.Graph(
+                    id='graph11',
+                    figure=fig11
                 )
             ])
         ], className='row')
