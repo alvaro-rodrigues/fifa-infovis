@@ -1,4 +1,5 @@
 import os
+import gc
 from random import randint
 import pandas as pd
 
@@ -36,6 +37,9 @@ fig8 = plot8(trfs7_8)
 fig9 = plot9(dfs[20])
 fig10 = plot10(dfs[20])
 fig11 = plot11(dfs[20])
+
+del dfs
+gc.collect()
 
 app.layout = html.Div(
     html.Div([
