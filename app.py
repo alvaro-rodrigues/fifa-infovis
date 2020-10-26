@@ -5,17 +5,16 @@ import pandas as pd
 
 import flask
 import dash
+import dash_bootstrap_components as dbc
 import dash_core_components as dcc
 import dash_html_components as html
 
 from src.transformations import transform1, transform2, transform3, transform4, transform6, transform7_8
 from src.plot import plot1, plot2, plot3, plot4, plot5, plot6, plot7, plot8, plot9, plot10, plot11
 
-external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
-
 server = flask.Flask(__name__)
 server.secret_key = os.environ.get('secret_key', str(randint(0, 1000000)))
-app = dash.Dash(__name__, server=server, external_stylesheets=external_stylesheets)
+app = dash.Dash(__name__, server=server)
 
 app.title = 'FIFA Data Visualization'
 
@@ -41,114 +40,77 @@ fig11 = plot11(dfs[20])
 del dfs
 gc.collect()
 
-app.layout = html.Div(
-    html.Div([
-        html.Div([
-            html.H1(children='FIFA Data Visualization'),
+PLOTLY_LOGO = "https://images.plot.ly/logo/new-branding/plotly-logomark.png"
 
-            html.Div(children='''
-                Data source: https://www.kaggle.com/stefanoleone992/fifa-20-complete-player-dataset
-            ''')
-        ], className='row'),
-
-        html.Div([
-            html.Div([
-                dcc.Graph(
-                    id='graph1',
-                    figure=fig1
-                )
-            ], className='six columns'),
-
-            html.Div([
-                dcc.Graph(
-                    id='graph2',
-                    figure=fig2
-                )
-            ], className='six columns')
-        ], className='row'),
-
-        html.Div([
-            html.Div([
-                dcc.Graph(
-                    id='graph3',
-                    figure=fig3
-                )
-            ])
-        ], className='row'),
-
-        html.Div([
-            html.Div([
-                dcc.Graph(
-                    id='graph4',
-                    figure=fig4
-                )
-            ])
-        ], className='row'),
-
-        html.Div([
-            html.Div([
-                dcc.Graph(
-                    id='graph5',
-                    figure=fig5
-                )
-            ])
-        ], className='row'),
-
-        html.Div([
-            html.Div([
-                dcc.Graph(
-                    id='graph6',
-                    figure=fig6
-                )
-            ])
-        ], className='row'),
-
-        html.Div([
-            html.Div([
-                dcc.Graph(
-                    id='graph7',
-                    figure=fig7
-                )
-            ])
-        ], className='row'),
-
-        html.Div([
-            html.Div([
-                dcc.Graph(
-                    id='graph8',
-                    figure=fig8
-                )
-            ])
-        ], className='row'),
-
-        html.Div([
-            html.Div([
-                dcc.Graph(
-                    id='graph9',
-                    figure=fig9
-                )
-            ])
-        ], className='row'),
-
-        html.Div([
-            html.Div([
-                dcc.Graph(
-                    id='graph10',
-                    figure=fig10
-                )
-            ])
-        ], className='row'),
-
-        html.Div([
-            html.Div([
-                dcc.Graph(
-                    id='graph11',
-                    figure=fig11
-                )
-            ])
-        ], className='row')
-    ])
-)
+app.layout = html.Div([
+        dbc.Navbar(
+            [
+                html.A(
+                    dbc.Row(
+                        [
+                            dbc.Col(html.Img(src=PLOTLY_LOGO, height="30px")),
+                            dbc.Col(dbc.NavbarBrand("FIFA Data Visualization", className="ml-2")),
+                            dbc.Col(dbc.NavLink("Code", href="https://github.com/alvaro-rodrigues/fifa-infovis", target="_blank")),
+                            dbc.Col(dbc.NavLink("Data", href='https://www.kaggle.com/stefanoleone992/fifa-20-complete-player-dataset', target="_blank")),
+                        ],
+                        align="center",
+                        no_gutters=True,
+                    ),
+                    href="#",
+                ),
+                dbc.NavbarToggler(id="navbar-toggler"),
+            ],
+            color="black",
+            dark=True,
+        ),
+        html.Br(),
+        dbc.Row(
+            [
+                dbc.Col(dcc.Graph(id='graph1', figure=fig1),
+                        width=6, lg={'size': 6,  "offset": 0, 'order': 'first'}
+                        ),
+                dbc.Col(dcc.Graph(id='graph2', figure=fig2),
+                        width=6, lg={'size': 6,  "offset": 0, 'order': 'last'}
+                        )
+            ]
+        ),
+        dbc.Row(dbc.Col(dcc.Graph(id='graph3', figure=fig3),
+                        width=12, lg={'size': 12,  "offset": 0, 'order': 'first'}
+                        )
+                ),
+        dbc.Row(dbc.Col(dcc.Graph(id='graph4', figure=fig4),
+                        width=12, lg={'size': 12,  "offset": 0, 'order': 'first'}
+                        )
+                ),
+        dbc.Row(dbc.Col(dcc.Graph(id='graph5', figure=fig5),
+                        width=12, lg={'size': 12,  "offset": 0, 'order': 'first'}
+                        )
+                ),
+        dbc.Row(dbc.Col(dcc.Graph(id='graph6', figure=fig6),
+                        width=12, lg={'size': 12,  "offset": 0, 'order': 'first'}
+                        )
+                ),
+        dbc.Row(dbc.Col(dcc.Graph(id='graph7', figure=fig7),
+                        width=12, lg={'size': 12,  "offset": 0, 'order': 'first'}
+                        )
+                ),
+        dbc.Row(dbc.Col(dcc.Graph(id='graph8', figure=fig8),
+                        width=12, lg={'size': 12,  "offset": 0, 'order': 'first'}
+                        )
+                ),
+        dbc.Row(dbc.Col(dcc.Graph(id='graph9', figure=fig9),
+                        width=12, lg={'size': 12,  "offset": 0, 'order': 'first'}
+                        )
+                ),
+        dbc.Row(dbc.Col(dcc.Graph(id='graph10', figure=fig10),
+                        width=12, lg={'size': 12,  "offset": 0, 'order': 'first'}
+                        )
+                ),
+        dbc.Row(dbc.Col(dcc.Graph(id='graph11', figure=fig11),
+                        width=12, lg={'size': 12,  "offset": 0, 'order': 'first'}
+                        )
+                )                                                                                                            
+])
 
 if __name__ == '__main__':
     app.server.run(debug=True, threaded=True)

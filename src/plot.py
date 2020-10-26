@@ -53,8 +53,9 @@ def plot1(df_lst):
             )
             
     fig.update_layout(
-    height=900, width=900,
-    title_text="Median of attributes by player position",
+    height=900,
+    title_text="<b>Mediana dos atributos pela posição do jogador<b>",
+    title_font_size = 20,
     polar1=dict(
         radialaxis=dict(
         visible=True,
@@ -157,12 +158,12 @@ def plot2(df_scatter):
                             row=subplots[i]['row'], col=subplots[i]['col'])
             
     fig.update_layout(
-        height=900, width=900,
-        autosize=False,
+        height=900,
         scene=dict(aspectmode="manual", aspectratio=dict(x=1, y=1)),
         xaxis=dict(scaleanchor="y", scaleratio=1),
         yaxis=dict(scaleanchor="x", scaleratio=1),
-        title_text="Value vs. overall of the players of the 9 most valuable teams"
+        title_text="<b>Valor vs. overall dos jogadores dos 9 times mais valiosos<b>",
+        title_font_size = 20
     )
 
     return fig
@@ -213,10 +214,9 @@ def plot3(overs):
             )
 
     fig.update_layout(
-        width=1500,
         height=750,
         title = "<b>Overall dos Jogadores Indicados ao Bola de Ouro 2019 a partir do FIFA 15<b>",
-        title_font_size = 25,
+        title_font_size = 20,
         title_xanchor = 'left')
 
     fig.update_yaxes(range=[68, 96])
@@ -270,10 +270,9 @@ def plot4(pots):
             )
 
     fig.update_layout(
-        width=1500,
         height=750,
         title = "<b>Potential dos Jogadores Indicados ao Bola de Ouro 2019 a partir do FIFA 15<b>",
-        title_font_size = 25,
+        title_font_size = 20,
         title_xanchor = 'left')
 
     fig.update_yaxes(range=[72, 96])
@@ -377,8 +376,7 @@ def plot5(df20):
 
     # Update the margins to add a title and see graph x-labels.
     fig.layout.margin.update({'t':100, 'b':50})
-    fig.layout.update({'title': '<b>FIFA 20 x Bola de Ouro 2019<b>'}, title_font_size = 35, width=1400,
-        height=700 )
+    fig.layout.update({'title': '<b>FIFA 20 x Bola de Ouro 2019<b>'}, title_font_size = 20, height=700)
 
     return fig
 
@@ -388,6 +386,12 @@ def plot6(corr_matrix):
                                       x=list(corr_matrix.columns),
                                       y=list(corr_matrix.columns),
                                       colorscale='Viridis')
+                            
+    fig.update_layout(
+        height=750,
+        title='<b>Matriz de correlação dos atributos dos jogadores<b>',
+        title_font_size = 20
+    )
 
     return fig
 
@@ -399,6 +403,12 @@ def plot7(principalDf):
     
     fig = px.scatter_3d(principalDf, x='Componente Principal I', y='Componente Principal II', z='Componente Principal III' ,size_max=14,
                         color="position", color_discrete_sequence=color_blind, hover_name="short_name")
+                
+    fig.update_layout(
+        height=750,
+        title='<b>Distribuição dos jogadores usando os 3 principais componentes do PCA<b>',
+        title_font_size = 20        
+    )
                         
     return fig
 
@@ -410,6 +420,12 @@ def plot8(principalDf):
     
     fig = px.scatter(principalDf , x='Componente Principal I', y='Componente Principal II',
                      color= "position", color_discrete_sequence=color_blind,hover_name="short_name")
+
+    fig.update_layout(
+        height=750,
+        title='<b>Distribuição dos jogadores usando os 2 principais componentes do PCA<b>',
+        title_font_size = 20        
+    )
                         
     return fig
 
@@ -427,10 +443,15 @@ def plot9(df):
                    labels={
                        'team_jersey_number': 'Número no uniforme',
                        'nationality': 'País'
-                   },
-                   title='Uso dos diferentes números no uniforme agrupado por países')
+                   }
+            )
 
-    fig.update_layout(bargap=0.5)
+    fig.update_layout(
+        height=750,
+        bargap=0.5,
+        title='<b>Uso dos diferentes números no uniforme agrupado por países<b>',
+        title_font_size = 20
+    )
 
     return fig
 
@@ -450,10 +471,16 @@ def plot10(df):
                 labels={
                         'pace': 'Ritmo',
                         'age': 'Idade'
-                    },
-                title="Influência da idade no ritmo do atleta")
+                    }
+                )
 
     fig.update_yaxes(rangemode="tozero")
+
+    fig.update_layout(
+        height=750,
+        title="<b>Influência da idade no ritmo do atleta<b>",
+        title_font_size = 20
+    )
 
     return fig
 
@@ -470,7 +497,6 @@ def plot11(df):
                        'height_cm': 'Altura (em cm)',
                        'position': 'Posição'
                    },
-                title="Relação entre altura e posição",
                 color_discrete_map={
                 "GK": "#4C78A8",
                 "CB": "#72B7B2",
@@ -490,5 +516,11 @@ def plot11(df):
 
     fig.update_xaxes(categoryarray = ["GK", "CB", "RB", "LB", "RWB", "LWB", "CDM", "CM", 
                                       "CAM", "LM", "RM", "CF", "LW", "RW", "ST"])
+
+    fig.update_layout(
+        height=750,
+        title="<b>Relação entre altura e posição<b>",
+        title_font_size = 20
+    )                                    
 
     return fig
