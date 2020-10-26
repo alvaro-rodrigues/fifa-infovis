@@ -28,20 +28,22 @@ for i in range(1, 12):
     with open('./input/descriptions/desc' + str(i) + '.txt' , 'r') as f:
         descs[i] = f.read()
 
-fig1 = plot1(transform1(dfs[20]))
-fig2 = plot2(transform2(dfs[20]))
-fig3 = plot3(transform3(dfs))
-fig4 = plot4(transform4(dfs))
-fig5 = plot5(dfs[20])
-fig6 = plot6(transform6(dfs[20]))
+figs = {}        
+
+figs[1] = plot1(transform1(dfs[20]))
+figs[2] = plot2(transform2(dfs[20]))
+figs[3] = plot3(transform3(dfs))
+figs[4] = plot4(transform4(dfs))
+figs[5] = plot5(dfs[20])
+figs[6] = plot6(transform6(dfs[20]))
 
 trfs7_8 = transform7_8(dfs[20])
 
-fig7 = plot7(trfs7_8)
-fig8 = plot8(trfs7_8)
-fig9 = plot9(dfs[20])
-fig10 = plot10(dfs[20])
-fig11 = plot11(dfs[20])
+figs[7] = plot7(trfs7_8)
+figs[8] = plot8(trfs7_8)
+figs[9] = plot9(dfs[20])
+figs[10] = plot10(dfs[20])
+figs[11] = plot11(dfs[20])
 
 del dfs
 gc.collect()
@@ -51,7 +53,8 @@ github = "https://github.com/alvaro-rodrigues/fifa-infovis"
 kaggle = "https://www.kaggle.com/stefanoleone992/fifa-20-complete-player-dataset"
 youtube = "https://www.youtube.com/watch?v=1CaibmPOb8A"
 
-app.layout = html.Div([
+
+layout = [
         dbc.Navbar(
             [
                 html.A(
@@ -76,10 +79,10 @@ app.layout = html.Div([
         html.Br(),
         dbc.Row(
             [
-                dbc.Col(dcc.Graph(id='graph1', figure=fig1),
+                dbc.Col(dcc.Graph(id='graph1', figure=figs[1]),
                         width=6, lg={'size': 6,  "offset": 0, 'order': 'first'}
                         ),
-                dbc.Col(dcc.Graph(id='graph2', figure=fig2),
+                dbc.Col(dcc.Graph(id='graph2', figure=figs[2]),
                         width=6, lg={'size': 6,  "offset": 0, 'order': 'last'}
                         )
             ]
@@ -117,215 +120,38 @@ app.layout = html.Div([
                 width=6, lg={'size': 6,  "offset": 0, 'order': 'first'}
                 )
             ]
+        )
+    ]
+
+for i in range(3, 12):
+
+    layout += [
+        dbc.Row(dbc.Col(dcc.Graph(id='graph' + str(i), figure=figs[i]),
+            width=12, lg={'size': 12,  "offset": 0, 'order': 'first'}
+            )
         ),
-        dbc.Row(dbc.Col(dcc.Graph(id='graph3', figure=fig3),
-                        width=12, lg={'size': 12,  "offset": 0, 'order': 'first'}
-                        )
-                ),
         dbc.Row(
             [
                 dbc.Col(
                     children = [
                         dbc.Button(
                             "+Informações",
-                            id="collapse-button3",
+                            id="collapse-button" + str(i),
                             className="mb-3",
                             color="dark",
                         ),
                         dbc.Collapse(
                             dbc.Card(dbc.CardBody(descs[3])),
-                            id="collapse3",
+                            id="collapse" + str(i),
                         )
                     ],
                 width=12, lg={'size': 12,  "offset": 0, 'order': 'first'}
                 )
             ]
-        ),
-        dbc.Row(dbc.Col(dcc.Graph(id='graph4', figure=fig4),
-                        width=12, lg={'size': 12,  "offset": 0, 'order': 'first'}
-                        )
-                ),
-        dbc.Row(
-            [
-                dbc.Col(
-                    children = [
-                        dbc.Button(
-                            "+Informações",
-                            id="collapse-button4",
-                            className="mb-3",
-                            color="dark",
-                        ),
-                        dbc.Collapse(
-                            dbc.Card(dbc.CardBody(descs[4])),
-                            id="collapse4",
-                        )
-                    ],
-                width=12, lg={'size': 12,  "offset": 0, 'order': 'first'}
-                )
-            ]
-        ),                
-        dbc.Row(dbc.Col(dcc.Graph(id='graph5', figure=fig5),
-                        width=12, lg={'size': 12,  "offset": 0, 'order': 'first'}
-                        )
-                ),
-        dbc.Row(
-            [
-                dbc.Col(
-                    children = [
-                        dbc.Button(
-                            "+Informações",
-                            id="collapse-button5",
-                            className="mb-3",
-                            color="dark",
-                        ),
-                        dbc.Collapse(
-                            dbc.Card(dbc.CardBody(descs[5])),
-                            id="collapse5",
-                        )
-                    ],
-                width=12, lg={'size': 12,  "offset": 0, 'order': 'first'}
-                )
-            ]
-        ),                
-        dbc.Row(dbc.Col(dcc.Graph(id='graph6', figure=fig6),
-                        width=12, lg={'size': 12,  "offset": 0, 'order': 'first'}
-                        )
-                ),
-        dbc.Row(
-            [
-                dbc.Col(
-                    children = [
-                        dbc.Button(
-                            "+Informações",
-                            id="collapse-button6",
-                            className="mb-3",
-                            color="dark",
-                        ),
-                        dbc.Collapse(
-                            dbc.Card(dbc.CardBody(descs[6])),
-                            id="collapse6",
-                        )
-                    ],
-                width=12, lg={'size': 12,  "offset": 0, 'order': 'first'}
-                )
-            ]
-        ),                
-        dbc.Row(dbc.Col(dcc.Graph(id='graph7', figure=fig7),
-                        width=12, lg={'size': 12,  "offset": 0, 'order': 'first'}
-                        )
-                ),
-        dbc.Row(
-            [
-                dbc.Col(
-                    children = [
-                        dbc.Button(
-                            "+Informações",
-                            id="collapse-button7",
-                            className="mb-3",
-                            color="dark",
-                        ),
-                        dbc.Collapse(
-                            dbc.Card(dbc.CardBody(descs[7])),
-                            id="collapse7",
-                        )
-                    ],
-                width=12, lg={'size': 12,  "offset": 0, 'order': 'first'}
-                )
-            ]
-        ),                
-        dbc.Row(dbc.Col(dcc.Graph(id='graph8', figure=fig8),
-                        width=12, lg={'size': 12,  "offset": 0, 'order': 'first'}
-                        )
-                ),
-        dbc.Row(
-            [
-                dbc.Col(
-                    children = [
-                        dbc.Button(
-                            "+Informações",
-                            id="collapse-button8",
-                            className="mb-3",
-                            color="dark",
-                        ),
-                        dbc.Collapse(
-                            dbc.Card(dbc.CardBody(descs[8])),
-                            id="collapse8",
-                        )
-                    ],
-                width=12, lg={'size': 12,  "offset": 0, 'order': 'first'}
-                )
-            ]
-        ),                
-        dbc.Row(dbc.Col(dcc.Graph(id='graph9', figure=fig9),
-                        width=12, lg={'size': 12,  "offset": 0, 'order': 'first'}
-                        )
-                ),
-        dbc.Row(
-            [
-                dbc.Col(
-                    children = [
-                        dbc.Button(
-                            "+Informações",
-                            id="collapse-button9",
-                            className="mb-3",
-                            color="dark",
-                        ),
-                        dbc.Collapse(
-                            dbc.Card(dbc.CardBody(descs[9])),
-                            id="collapse9",
-                        )
-                    ],
-                width=12, lg={'size': 12,  "offset": 0, 'order': 'first'}
-                )
-            ]
-        ),                
-        dbc.Row(dbc.Col(dcc.Graph(id='graph10', figure=fig10),
-                        width=12, lg={'size': 12,  "offset": 0, 'order': 'first'}
-                        )
-                ),
-        dbc.Row(
-            [
-                dbc.Col(
-                    children = [
-                        dbc.Button(
-                            "+Informações",
-                            id="collapse-button10",
-                            className="mb-3",
-                            color="dark",
-                        ),
-                        dbc.Collapse(
-                            dbc.Card(dbc.CardBody(descs[10])),
-                            id="collapse10",
-                        )
-                    ],
-                width=12, lg={'size': 12,  "offset": 0, 'order': 'first'}
-                )
-            ]
-        ),                
-        dbc.Row(dbc.Col(dcc.Graph(id='graph11', figure=fig11),
-                        width=12, lg={'size': 12,  "offset": 0, 'order': 'first'}
-                        )
-                ),
-        dbc.Row(
-            [
-                dbc.Col(
-                    children = [
-                        dbc.Button(
-                            "+Informações",
-                            id="collapse-button11",
-                            className="mb-3",
-                            color="dark",
-                        ),
-                        dbc.Collapse(
-                            dbc.Card(dbc.CardBody(descs[11])),
-                            id="collapse11",
-                        )
-                    ],
-                width=12, lg={'size': 12,  "offset": 0, 'order': 'first'}
-                )
-            ]
-        )                                                                                                                            
-])
+        )
+    ]        
+
+app.layout = html.Div(layout)
 
 def toggle_collapse(n, is_open):
     if n:
