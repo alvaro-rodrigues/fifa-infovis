@@ -40,19 +40,30 @@ fig11 = plot11(dfs[20])
 del dfs
 gc.collect()
 
+PLOTLY_LOGO = "https://images.plot.ly/logo/new-branding/plotly-logomark.png"
+
 app.layout = html.Div([
-        dbc.Row(dbc.Col(html.H3("FIFA Data Visualization"),
-                        width={'size': 6, 'offset': 0},
-                        ),
+        dbc.Navbar(
+            [
+                html.A(
+                    dbc.Row(
+                        [
+                            dbc.Col(html.Img(src=PLOTLY_LOGO, height="30px")),
+                            dbc.Col(dbc.NavbarBrand("FIFA Data Visualization", className="ml-2")),
+                            dbc.Col(dbc.NavLink("Code", href="https://github.com/alvaro-rodrigues/fifa-infovis", target="_blank")),
+                            dbc.Col(dbc.NavLink("Data", href='https://www.kaggle.com/stefanoleone992/fifa-20-complete-player-dataset', target="_blank")),
+                        ],
+                        align="center",
+                        no_gutters=True,
+                    ),
+                    href="#",
                 ),
-        dbc.Row(dbc.Col(html.Div(
-                            children = [
-                                html.A("Data source", href='https://www.kaggle.com/stefanoleone992/fifa-20-complete-player-dataset', target="_blank"),
-                                html.A("    Code", href='https://github.com/alvaro-rodrigues/fifa-infovis', target="_blank")
-                                ]
-                            )
-                        )
-                ),
+                dbc.NavbarToggler(id="navbar-toggler"),
+            ],
+            color="black",
+            dark=True,
+        ),
+        html.Br(),
         dbc.Row(
             [
                 dbc.Col(dcc.Graph(id='graph1', figure=fig1),
