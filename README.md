@@ -3,7 +3,7 @@
 
 ## About the project
 
-This is the final project for the [DCC030 - Data Visualization](https://homepages.dcc.ufmg.br/~raquelcm/index.php?alias=visualizacao) class. It consists in different visualization using data from the EA Sports FIFA game. It is mainly based on FIFA 20 data, but previus versions of the game were considered in some visualizations. The data used can be founded on Kaggle [here](https://www.kaggle.com/stefanoleone992/fifa-20-complete-player-dataset).
+This is the final project for the [DCC030 - Data Visualization](https://homepages.dcc.ufmg.br/~raquelcm/index.php?alias=visualizacao) class. It consists in different visualization using data from the EA Sports FIFA game. It is mainly based on FIFA 20 data, but previus versions of the game were considered in some visualizations. The data used can be found on Kaggle [here](https://www.kaggle.com/stefanoleone992/fifa-20-complete-player-dataset).
 
 ### Built With
 
@@ -13,7 +13,7 @@ This is the final project for the [DCC030 - Data Visualization](https://homepage
 
 ## Usage
 
-You can explore the visualizations in a web application [here](https://fifa-infovis.herokuapp.com/). The app is hosted on Heroku using a free plan, so it can take a couple seconds to the page be fully loaded (but it is free :smile:)
+You can explore the visualizations in a web application [here](https://fifa-infovis.herokuapp.com/). The app is hosted on Heroku using a free plan, so it can take a couple seconds to the page be fully loaded (but it is free :smile:).
 
 ## Using a local server
 
