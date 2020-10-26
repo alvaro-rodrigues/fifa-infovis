@@ -8,6 +8,7 @@ import dash
 import dash_bootstrap_components as dbc
 import dash_core_components as dcc
 import dash_html_components as html
+from dash.dependencies import Input, Output, State
 
 from src.transformations import transform1, transform2, transform3, transform4, transform6, transform7_8
 from src.plot import plot1, plot2, plot3, plot4, plot5, plot6, plot7, plot8, plot9, plot10, plot11
@@ -64,7 +65,7 @@ app.layout = html.Div([
                 ),
                 dbc.NavbarToggler(id="navbar-toggler"),
             ],
-            color="black",
+            color="dark",
             dark=True,
         ),
         html.Br(),
@@ -78,43 +79,260 @@ app.layout = html.Div([
                         )
             ]
         ),
+        dbc.Row(
+            [
+                dbc.Col(
+                    children = [
+                        dbc.Button(
+                            "+Informações",
+                            id="collapse-button1",
+                            className="mb-3",
+                            color="dark",
+                        ),
+                        dbc.Collapse(
+                            dbc.Card(dbc.CardBody("Lorem ipsum dolor sit amet, consectetur adipiscing elit. In gravida varius purus id dapibus. Mauris hendrerit a purus porttitor venenatis. Donec lobortis sem ut nisl tristique egestas. Phasellus tempor, nulla a tincidunt suscipit, magna ipsum iaculis tortor, in consectetur ante velit vitae turpis. Suspendisse et mattis nisl. Nam in tellus fringilla, maximus leo eget, condimentum justo. Donec a eros nisl. Duis porttitor in mauris vitae posuere. Praesent hendrerit dui velit, ac iaculis nulla sagittis nec. Nunc molestie dolor non nisl eleifend dignissim. Phasellus ultricies sagittis dictum.")),
+                            id="collapse1",
+                        )
+                    ],
+                width=6, lg={'size': 6,  "offset": 0, 'order': 'first'}
+                ),
+               dbc.Col(
+                   children = [
+                        dbc.Button(
+                            "+Informações",
+                            id="collapse-button2",
+                            className="mb-3",
+                            color="dark",
+                        ),
+                        dbc.Collapse(
+                            dbc.Card(dbc.CardBody("Lorem ipsum dolor sit amet, consectetur adipiscing elit. In gravida varius purus id dapibus. Mauris hendrerit a purus porttitor venenatis. Donec lobortis sem ut nisl tristique egestas. Phasellus tempor, nulla a tincidunt suscipit, magna ipsum iaculis tortor, in consectetur ante velit vitae turpis. Suspendisse et mattis nisl. Nam in tellus fringilla, maximus leo eget, condimentum justo. Donec a eros nisl. Duis porttitor in mauris vitae posuere. Praesent hendrerit dui velit, ac iaculis nulla sagittis nec. Nunc molestie dolor non nisl eleifend dignissim. Phasellus ultricies sagittis dictum.")),
+                            id="collapse2",
+                        )
+                    ],
+                width=6, lg={'size': 6,  "offset": 0, 'order': 'first'}
+                )
+            ]
+        ),
         dbc.Row(dbc.Col(dcc.Graph(id='graph3', figure=fig3),
                         width=12, lg={'size': 12,  "offset": 0, 'order': 'first'}
                         )
                 ),
+        dbc.Row(
+            [
+                dbc.Col(
+                    children = [
+                        dbc.Button(
+                            "+Informações",
+                            id="collapse-button3",
+                            className="mb-3",
+                            color="dark",
+                        ),
+                        dbc.Collapse(
+                            dbc.Card(dbc.CardBody("Lorem ipsum dolor sit amet, consectetur adipiscing elit. In gravida varius purus id dapibus. Mauris hendrerit a purus porttitor venenatis. Donec lobortis sem ut nisl tristique egestas. Phasellus tempor, nulla a tincidunt suscipit, magna ipsum iaculis tortor, in consectetur ante velit vitae turpis. Suspendisse et mattis nisl. Nam in tellus fringilla, maximus leo eget, condimentum justo. Donec a eros nisl. Duis porttitor in mauris vitae posuere. Praesent hendrerit dui velit, ac iaculis nulla sagittis nec. Nunc molestie dolor non nisl eleifend dignissim. Phasellus ultricies sagittis dictum.")),
+                            id="collapse3",
+                        )
+                    ],
+                width=12, lg={'size': 12,  "offset": 0, 'order': 'first'}
+                )
+            ]
+        ),
         dbc.Row(dbc.Col(dcc.Graph(id='graph4', figure=fig4),
                         width=12, lg={'size': 12,  "offset": 0, 'order': 'first'}
                         )
                 ),
+        dbc.Row(
+            [
+                dbc.Col(
+                    children = [
+                        dbc.Button(
+                            "+Informações",
+                            id="collapse-button4",
+                            className="mb-3",
+                            color="dark",
+                        ),
+                        dbc.Collapse(
+                            dbc.Card(dbc.CardBody("Lorem ipsum dolor sit amet, consectetur adipiscing elit. In gravida varius purus id dapibus. Mauris hendrerit a purus porttitor venenatis. Donec lobortis sem ut nisl tristique egestas. Phasellus tempor, nulla a tincidunt suscipit, magna ipsum iaculis tortor, in consectetur ante velit vitae turpis. Suspendisse et mattis nisl. Nam in tellus fringilla, maximus leo eget, condimentum justo. Donec a eros nisl. Duis porttitor in mauris vitae posuere. Praesent hendrerit dui velit, ac iaculis nulla sagittis nec. Nunc molestie dolor non nisl eleifend dignissim. Phasellus ultricies sagittis dictum.")),
+                            id="collapse4",
+                        )
+                    ],
+                width=12, lg={'size': 12,  "offset": 0, 'order': 'first'}
+                )
+            ]
+        ),                
         dbc.Row(dbc.Col(dcc.Graph(id='graph5', figure=fig5),
                         width=12, lg={'size': 12,  "offset": 0, 'order': 'first'}
                         )
                 ),
+        dbc.Row(
+            [
+                dbc.Col(
+                    children = [
+                        dbc.Button(
+                            "+Informações",
+                            id="collapse-button5",
+                            className="mb-3",
+                            color="dark",
+                        ),
+                        dbc.Collapse(
+                            dbc.Card(dbc.CardBody("Lorem ipsum dolor sit amet, consectetur adipiscing elit. In gravida varius purus id dapibus. Mauris hendrerit a purus porttitor venenatis. Donec lobortis sem ut nisl tristique egestas. Phasellus tempor, nulla a tincidunt suscipit, magna ipsum iaculis tortor, in consectetur ante velit vitae turpis. Suspendisse et mattis nisl. Nam in tellus fringilla, maximus leo eget, condimentum justo. Donec a eros nisl. Duis porttitor in mauris vitae posuere. Praesent hendrerit dui velit, ac iaculis nulla sagittis nec. Nunc molestie dolor non nisl eleifend dignissim. Phasellus ultricies sagittis dictum.")),
+                            id="collapse5",
+                        )
+                    ],
+                width=12, lg={'size': 12,  "offset": 0, 'order': 'first'}
+                )
+            ]
+        ),                
         dbc.Row(dbc.Col(dcc.Graph(id='graph6', figure=fig6),
                         width=12, lg={'size': 12,  "offset": 0, 'order': 'first'}
                         )
                 ),
+        dbc.Row(
+            [
+                dbc.Col(
+                    children = [
+                        dbc.Button(
+                            "+Informações",
+                            id="collapse-button6",
+                            className="mb-3",
+                            color="dark",
+                        ),
+                        dbc.Collapse(
+                            dbc.Card(dbc.CardBody("Lorem ipsum dolor sit amet, consectetur adipiscing elit. In gravida varius purus id dapibus. Mauris hendrerit a purus porttitor venenatis. Donec lobortis sem ut nisl tristique egestas. Phasellus tempor, nulla a tincidunt suscipit, magna ipsum iaculis tortor, in consectetur ante velit vitae turpis. Suspendisse et mattis nisl. Nam in tellus fringilla, maximus leo eget, condimentum justo. Donec a eros nisl. Duis porttitor in mauris vitae posuere. Praesent hendrerit dui velit, ac iaculis nulla sagittis nec. Nunc molestie dolor non nisl eleifend dignissim. Phasellus ultricies sagittis dictum.")),
+                            id="collapse6",
+                        )
+                    ],
+                width=12, lg={'size': 12,  "offset": 0, 'order': 'first'}
+                )
+            ]
+        ),                
         dbc.Row(dbc.Col(dcc.Graph(id='graph7', figure=fig7),
                         width=12, lg={'size': 12,  "offset": 0, 'order': 'first'}
                         )
                 ),
+        dbc.Row(
+            [
+                dbc.Col(
+                    children = [
+                        dbc.Button(
+                            "+Informações",
+                            id="collapse-button7",
+                            className="mb-3",
+                            color="dark",
+                        ),
+                        dbc.Collapse(
+                            dbc.Card(dbc.CardBody("Lorem ipsum dolor sit amet, consectetur adipiscing elit. In gravida varius purus id dapibus. Mauris hendrerit a purus porttitor venenatis. Donec lobortis sem ut nisl tristique egestas. Phasellus tempor, nulla a tincidunt suscipit, magna ipsum iaculis tortor, in consectetur ante velit vitae turpis. Suspendisse et mattis nisl. Nam in tellus fringilla, maximus leo eget, condimentum justo. Donec a eros nisl. Duis porttitor in mauris vitae posuere. Praesent hendrerit dui velit, ac iaculis nulla sagittis nec. Nunc molestie dolor non nisl eleifend dignissim. Phasellus ultricies sagittis dictum.")),
+                            id="collapse7",
+                        )
+                    ],
+                width=12, lg={'size': 12,  "offset": 0, 'order': 'first'}
+                )
+            ]
+        ),                
         dbc.Row(dbc.Col(dcc.Graph(id='graph8', figure=fig8),
                         width=12, lg={'size': 12,  "offset": 0, 'order': 'first'}
                         )
                 ),
+        dbc.Row(
+            [
+                dbc.Col(
+                    children = [
+                        dbc.Button(
+                            "+Informações",
+                            id="collapse-button8",
+                            className="mb-3",
+                            color="dark",
+                        ),
+                        dbc.Collapse(
+                            dbc.Card(dbc.CardBody("Lorem ipsum dolor sit amet, consectetur adipiscing elit. In gravida varius purus id dapibus. Mauris hendrerit a purus porttitor venenatis. Donec lobortis sem ut nisl tristique egestas. Phasellus tempor, nulla a tincidunt suscipit, magna ipsum iaculis tortor, in consectetur ante velit vitae turpis. Suspendisse et mattis nisl. Nam in tellus fringilla, maximus leo eget, condimentum justo. Donec a eros nisl. Duis porttitor in mauris vitae posuere. Praesent hendrerit dui velit, ac iaculis nulla sagittis nec. Nunc molestie dolor non nisl eleifend dignissim. Phasellus ultricies sagittis dictum.")),
+                            id="collapse8",
+                        )
+                    ],
+                width=12, lg={'size': 12,  "offset": 0, 'order': 'first'}
+                )
+            ]
+        ),                
         dbc.Row(dbc.Col(dcc.Graph(id='graph9', figure=fig9),
                         width=12, lg={'size': 12,  "offset": 0, 'order': 'first'}
                         )
                 ),
+        dbc.Row(
+            [
+                dbc.Col(
+                    children = [
+                        dbc.Button(
+                            "+Informações",
+                            id="collapse-button9",
+                            className="mb-3",
+                            color="dark",
+                        ),
+                        dbc.Collapse(
+                            dbc.Card(dbc.CardBody("Lorem ipsum dolor sit amet, consectetur adipiscing elit. In gravida varius purus id dapibus. Mauris hendrerit a purus porttitor venenatis. Donec lobortis sem ut nisl tristique egestas. Phasellus tempor, nulla a tincidunt suscipit, magna ipsum iaculis tortor, in consectetur ante velit vitae turpis. Suspendisse et mattis nisl. Nam in tellus fringilla, maximus leo eget, condimentum justo. Donec a eros nisl. Duis porttitor in mauris vitae posuere. Praesent hendrerit dui velit, ac iaculis nulla sagittis nec. Nunc molestie dolor non nisl eleifend dignissim. Phasellus ultricies sagittis dictum.")),
+                            id="collapse9",
+                        )
+                    ],
+                width=12, lg={'size': 12,  "offset": 0, 'order': 'first'}
+                )
+            ]
+        ),                
         dbc.Row(dbc.Col(dcc.Graph(id='graph10', figure=fig10),
                         width=12, lg={'size': 12,  "offset": 0, 'order': 'first'}
                         )
                 ),
+        dbc.Row(
+            [
+                dbc.Col(
+                    children = [
+                        dbc.Button(
+                            "+Informações",
+                            id="collapse-button10",
+                            className="mb-3",
+                            color="dark",
+                        ),
+                        dbc.Collapse(
+                            dbc.Card(dbc.CardBody("Lorem ipsum dolor sit amet, consectetur adipiscing elit. In gravida varius purus id dapibus. Mauris hendrerit a purus porttitor venenatis. Donec lobortis sem ut nisl tristique egestas. Phasellus tempor, nulla a tincidunt suscipit, magna ipsum iaculis tortor, in consectetur ante velit vitae turpis. Suspendisse et mattis nisl. Nam in tellus fringilla, maximus leo eget, condimentum justo. Donec a eros nisl. Duis porttitor in mauris vitae posuere. Praesent hendrerit dui velit, ac iaculis nulla sagittis nec. Nunc molestie dolor non nisl eleifend dignissim. Phasellus ultricies sagittis dictum.")),
+                            id="collapse10",
+                        )
+                    ],
+                width=12, lg={'size': 12,  "offset": 0, 'order': 'first'}
+                )
+            ]
+        ),                
         dbc.Row(dbc.Col(dcc.Graph(id='graph11', figure=fig11),
                         width=12, lg={'size': 12,  "offset": 0, 'order': 'first'}
                         )
-                )                                                                                                            
+                ),
+        dbc.Row(
+            [
+                dbc.Col(
+                    children = [
+                        dbc.Button(
+                            "+Informações",
+                            id="collapse-button11",
+                            className="mb-3",
+                            color="dark",
+                        ),
+                        dbc.Collapse(
+                            dbc.Card(dbc.CardBody("Lorem ipsum dolor sit amet, consectetur adipiscing elit. In gravida varius purus id dapibus. Mauris hendrerit a purus porttitor venenatis. Donec lobortis sem ut nisl tristique egestas. Phasellus tempor, nulla a tincidunt suscipit, magna ipsum iaculis tortor, in consectetur ante velit vitae turpis. Suspendisse et mattis nisl. Nam in tellus fringilla, maximus leo eget, condimentum justo. Donec a eros nisl. Duis porttitor in mauris vitae posuere. Praesent hendrerit dui velit, ac iaculis nulla sagittis nec. Nunc molestie dolor non nisl eleifend dignissim. Phasellus ultricies sagittis dictum.")),
+                            id="collapse11",
+                        )
+                    ],
+                width=12, lg={'size': 12,  "offset": 0, 'order': 'first'}
+                )
+            ]
+        )                                                                                                                            
 ])
+
+def toggle_collapse(n, is_open):
+    if n:
+        return not is_open
+    return is_open
+
+for i in range(11):
+    app.callback(
+        Output("collapse" + str(i+1), "is_open"),
+        [Input("collapse-button" + str(i+1), "n_clicks")],
+        [State("collapse" + str(i+1), "is_open")],
+    )(toggle_collapse)
 
 if __name__ == '__main__':
     app.server.run(debug=True, threaded=True)
