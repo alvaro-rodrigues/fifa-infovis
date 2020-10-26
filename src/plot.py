@@ -195,7 +195,7 @@ def plot3(overs):
                 y= overs[key],
                 mode = 'markers+lines',
                 line_color=color[i],
-                name= 'Mahrez',
+                name= key,
                 showlegend= False),
             row = subplots[i]['row'],
             col = subplots[i]['col']
@@ -445,6 +445,8 @@ def plot9(df):
                        'nationality': 'País'
                    }
             )
+        
+    fig.layout.yaxis.update({'title': 'Proporção'})
 
     fig.update_layout(
         height=750,
