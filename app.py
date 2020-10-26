@@ -23,6 +23,11 @@ dfs = {}
 for i in range(15, 21):
     dfs[i] = pd.read_csv('./input/players_' + str(i) + '.csv')
 
+descs = {}
+for i in range(1, 12):
+    with open('./input/descriptions/desc' + str(i) + '.txt' , 'r') as f:
+        descs[i] = f.read()
+
 fig1 = plot1(transform1(dfs[20]))
 fig2 = plot2(transform2(dfs[20]))
 fig3 = plot3(transform3(dfs))
@@ -90,7 +95,7 @@ app.layout = html.Div([
                             color="dark",
                         ),
                         dbc.Collapse(
-                            dbc.Card(dbc.CardBody("Lorem ipsum dolor sit amet, consectetur adipiscing elit. In gravida varius purus id dapibus. Mauris hendrerit a purus porttitor venenatis. Donec lobortis sem ut nisl tristique egestas. Phasellus tempor, nulla a tincidunt suscipit, magna ipsum iaculis tortor, in consectetur ante velit vitae turpis. Suspendisse et mattis nisl. Nam in tellus fringilla, maximus leo eget, condimentum justo. Donec a eros nisl. Duis porttitor in mauris vitae posuere. Praesent hendrerit dui velit, ac iaculis nulla sagittis nec. Nunc molestie dolor non nisl eleifend dignissim. Phasellus ultricies sagittis dictum.")),
+                            dbc.Card(dbc.CardBody(descs[1])),
                             id="collapse1",
                         )
                     ],
@@ -105,7 +110,7 @@ app.layout = html.Div([
                             color="dark",
                         ),
                         dbc.Collapse(
-                            dbc.Card(dbc.CardBody("Lorem ipsum dolor sit amet, consectetur adipiscing elit. In gravida varius purus id dapibus. Mauris hendrerit a purus porttitor venenatis. Donec lobortis sem ut nisl tristique egestas. Phasellus tempor, nulla a tincidunt suscipit, magna ipsum iaculis tortor, in consectetur ante velit vitae turpis. Suspendisse et mattis nisl. Nam in tellus fringilla, maximus leo eget, condimentum justo. Donec a eros nisl. Duis porttitor in mauris vitae posuere. Praesent hendrerit dui velit, ac iaculis nulla sagittis nec. Nunc molestie dolor non nisl eleifend dignissim. Phasellus ultricies sagittis dictum.")),
+                            dbc.Card(dbc.CardBody(descs[2])),
                             id="collapse2",
                         )
                     ],
@@ -128,7 +133,7 @@ app.layout = html.Div([
                             color="dark",
                         ),
                         dbc.Collapse(
-                            dbc.Card(dbc.CardBody("Lorem ipsum dolor sit amet, consectetur adipiscing elit. In gravida varius purus id dapibus. Mauris hendrerit a purus porttitor venenatis. Donec lobortis sem ut nisl tristique egestas. Phasellus tempor, nulla a tincidunt suscipit, magna ipsum iaculis tortor, in consectetur ante velit vitae turpis. Suspendisse et mattis nisl. Nam in tellus fringilla, maximus leo eget, condimentum justo. Donec a eros nisl. Duis porttitor in mauris vitae posuere. Praesent hendrerit dui velit, ac iaculis nulla sagittis nec. Nunc molestie dolor non nisl eleifend dignissim. Phasellus ultricies sagittis dictum.")),
+                            dbc.Card(dbc.CardBody(descs[3])),
                             id="collapse3",
                         )
                     ],
@@ -151,7 +156,7 @@ app.layout = html.Div([
                             color="dark",
                         ),
                         dbc.Collapse(
-                            dbc.Card(dbc.CardBody("Lorem ipsum dolor sit amet, consectetur adipiscing elit. In gravida varius purus id dapibus. Mauris hendrerit a purus porttitor venenatis. Donec lobortis sem ut nisl tristique egestas. Phasellus tempor, nulla a tincidunt suscipit, magna ipsum iaculis tortor, in consectetur ante velit vitae turpis. Suspendisse et mattis nisl. Nam in tellus fringilla, maximus leo eget, condimentum justo. Donec a eros nisl. Duis porttitor in mauris vitae posuere. Praesent hendrerit dui velit, ac iaculis nulla sagittis nec. Nunc molestie dolor non nisl eleifend dignissim. Phasellus ultricies sagittis dictum.")),
+                            dbc.Card(dbc.CardBody(descs[4])),
                             id="collapse4",
                         )
                     ],
@@ -174,7 +179,7 @@ app.layout = html.Div([
                             color="dark",
                         ),
                         dbc.Collapse(
-                            dbc.Card(dbc.CardBody("Lorem ipsum dolor sit amet, consectetur adipiscing elit. In gravida varius purus id dapibus. Mauris hendrerit a purus porttitor venenatis. Donec lobortis sem ut nisl tristique egestas. Phasellus tempor, nulla a tincidunt suscipit, magna ipsum iaculis tortor, in consectetur ante velit vitae turpis. Suspendisse et mattis nisl. Nam in tellus fringilla, maximus leo eget, condimentum justo. Donec a eros nisl. Duis porttitor in mauris vitae posuere. Praesent hendrerit dui velit, ac iaculis nulla sagittis nec. Nunc molestie dolor non nisl eleifend dignissim. Phasellus ultricies sagittis dictum.")),
+                            dbc.Card(dbc.CardBody(descs[5])),
                             id="collapse5",
                         )
                     ],
@@ -197,7 +202,7 @@ app.layout = html.Div([
                             color="dark",
                         ),
                         dbc.Collapse(
-                            dbc.Card(dbc.CardBody("Lorem ipsum dolor sit amet, consectetur adipiscing elit. In gravida varius purus id dapibus. Mauris hendrerit a purus porttitor venenatis. Donec lobortis sem ut nisl tristique egestas. Phasellus tempor, nulla a tincidunt suscipit, magna ipsum iaculis tortor, in consectetur ante velit vitae turpis. Suspendisse et mattis nisl. Nam in tellus fringilla, maximus leo eget, condimentum justo. Donec a eros nisl. Duis porttitor in mauris vitae posuere. Praesent hendrerit dui velit, ac iaculis nulla sagittis nec. Nunc molestie dolor non nisl eleifend dignissim. Phasellus ultricies sagittis dictum.")),
+                            dbc.Card(dbc.CardBody(descs[6])),
                             id="collapse6",
                         )
                     ],
@@ -220,7 +225,7 @@ app.layout = html.Div([
                             color="dark",
                         ),
                         dbc.Collapse(
-                            dbc.Card(dbc.CardBody("Lorem ipsum dolor sit amet, consectetur adipiscing elit. In gravida varius purus id dapibus. Mauris hendrerit a purus porttitor venenatis. Donec lobortis sem ut nisl tristique egestas. Phasellus tempor, nulla a tincidunt suscipit, magna ipsum iaculis tortor, in consectetur ante velit vitae turpis. Suspendisse et mattis nisl. Nam in tellus fringilla, maximus leo eget, condimentum justo. Donec a eros nisl. Duis porttitor in mauris vitae posuere. Praesent hendrerit dui velit, ac iaculis nulla sagittis nec. Nunc molestie dolor non nisl eleifend dignissim. Phasellus ultricies sagittis dictum.")),
+                            dbc.Card(dbc.CardBody(descs[7])),
                             id="collapse7",
                         )
                     ],
@@ -243,7 +248,7 @@ app.layout = html.Div([
                             color="dark",
                         ),
                         dbc.Collapse(
-                            dbc.Card(dbc.CardBody("Lorem ipsum dolor sit amet, consectetur adipiscing elit. In gravida varius purus id dapibus. Mauris hendrerit a purus porttitor venenatis. Donec lobortis sem ut nisl tristique egestas. Phasellus tempor, nulla a tincidunt suscipit, magna ipsum iaculis tortor, in consectetur ante velit vitae turpis. Suspendisse et mattis nisl. Nam in tellus fringilla, maximus leo eget, condimentum justo. Donec a eros nisl. Duis porttitor in mauris vitae posuere. Praesent hendrerit dui velit, ac iaculis nulla sagittis nec. Nunc molestie dolor non nisl eleifend dignissim. Phasellus ultricies sagittis dictum.")),
+                            dbc.Card(dbc.CardBody(descs[8])),
                             id="collapse8",
                         )
                     ],
@@ -266,7 +271,7 @@ app.layout = html.Div([
                             color="dark",
                         ),
                         dbc.Collapse(
-                            dbc.Card(dbc.CardBody("Lorem ipsum dolor sit amet, consectetur adipiscing elit. In gravida varius purus id dapibus. Mauris hendrerit a purus porttitor venenatis. Donec lobortis sem ut nisl tristique egestas. Phasellus tempor, nulla a tincidunt suscipit, magna ipsum iaculis tortor, in consectetur ante velit vitae turpis. Suspendisse et mattis nisl. Nam in tellus fringilla, maximus leo eget, condimentum justo. Donec a eros nisl. Duis porttitor in mauris vitae posuere. Praesent hendrerit dui velit, ac iaculis nulla sagittis nec. Nunc molestie dolor non nisl eleifend dignissim. Phasellus ultricies sagittis dictum.")),
+                            dbc.Card(dbc.CardBody(descs[9])),
                             id="collapse9",
                         )
                     ],
@@ -289,7 +294,7 @@ app.layout = html.Div([
                             color="dark",
                         ),
                         dbc.Collapse(
-                            dbc.Card(dbc.CardBody("Lorem ipsum dolor sit amet, consectetur adipiscing elit. In gravida varius purus id dapibus. Mauris hendrerit a purus porttitor venenatis. Donec lobortis sem ut nisl tristique egestas. Phasellus tempor, nulla a tincidunt suscipit, magna ipsum iaculis tortor, in consectetur ante velit vitae turpis. Suspendisse et mattis nisl. Nam in tellus fringilla, maximus leo eget, condimentum justo. Donec a eros nisl. Duis porttitor in mauris vitae posuere. Praesent hendrerit dui velit, ac iaculis nulla sagittis nec. Nunc molestie dolor non nisl eleifend dignissim. Phasellus ultricies sagittis dictum.")),
+                            dbc.Card(dbc.CardBody(descs[10])),
                             id="collapse10",
                         )
                     ],
@@ -312,7 +317,7 @@ app.layout = html.Div([
                             color="dark",
                         ),
                         dbc.Collapse(
-                            dbc.Card(dbc.CardBody("Lorem ipsum dolor sit amet, consectetur adipiscing elit. In gravida varius purus id dapibus. Mauris hendrerit a purus porttitor venenatis. Donec lobortis sem ut nisl tristique egestas. Phasellus tempor, nulla a tincidunt suscipit, magna ipsum iaculis tortor, in consectetur ante velit vitae turpis. Suspendisse et mattis nisl. Nam in tellus fringilla, maximus leo eget, condimentum justo. Donec a eros nisl. Duis porttitor in mauris vitae posuere. Praesent hendrerit dui velit, ac iaculis nulla sagittis nec. Nunc molestie dolor non nisl eleifend dignissim. Phasellus ultricies sagittis dictum.")),
+                            dbc.Card(dbc.CardBody(descs[11])),
                             id="collapse11",
                         )
                     ],
