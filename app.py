@@ -41,6 +41,9 @@ del dfs
 gc.collect()
 
 PLOTLY_LOGO = "https://images.plot.ly/logo/new-branding/plotly-logomark.png"
+github = "https://github.com/alvaro-rodrigues/fifa-infovis"
+kaggle = "https://www.kaggle.com/stefanoleone992/fifa-20-complete-player-dataset"
+youtube = "https://www.youtube.com/watch?v=1CaibmPOb8A"
 
 app.layout = html.Div([
         dbc.Navbar(
@@ -50,8 +53,9 @@ app.layout = html.Div([
                         [
                             dbc.Col(html.Img(src=PLOTLY_LOGO, height="30px")),
                             dbc.Col(dbc.NavbarBrand("FIFA Data Visualization", className="ml-2")),
-                            dbc.Col(dbc.NavLink("Code", href="https://github.com/alvaro-rodrigues/fifa-infovis", target="_blank")),
-                            dbc.Col(dbc.NavLink("Data", href='https://www.kaggle.com/stefanoleone992/fifa-20-complete-player-dataset', target="_blank")),
+                            dbc.Col(dbc.Nav(dbc.NavItem(dbc.NavLink("Code", href=github, target="_blank")), navbar=True)),
+                            dbc.Col(dbc.Nav(dbc.NavItem(dbc.NavLink("Data", href=kaggle, target="_blank")), navbar=True)),
+                            dbc.Col(dbc.Nav(dbc.NavItem(dbc.NavLink("Video", href=youtube, target="_blank")), navbar=True))
                         ],
                         align="center",
                         no_gutters=True,
