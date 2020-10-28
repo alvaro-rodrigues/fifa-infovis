@@ -3,7 +3,12 @@
 
 ## About the project
 
-This is the final project for the [DCC030 - Data Visualization](https://homepages.dcc.ufmg.br/~raquelcm/index.php?alias=visualizacao) class. It consists in different visualization using data from the EA Sports FIFA game. It is mainly based on FIFA 20 data, but previus versions of the game were considered in some visualizations. The data used can be found on Kaggle [here](https://www.kaggle.com/stefanoleone992/fifa-20-complete-player-dataset).
+This is the final project for the [DCC030 - Data Visualization](https://homepages.dcc.ufmg.br/~raquelcm/index.php?alias=visualizacao) class. It consists in different visualization using data from the EA Sports FIFA games. Using the data from FIFA games, we can make a comparison between games and reality, according to the players, their clubs and their market values. It is mainly based on FIFA 20 data, but previus versions of the game were considered in some visualizations. The database used can be found on Kaggle [here](https://www.kaggle.com/stefanoleone992/fifa-20-complete-player-dataset).
+
+This database provides us all the players present in the games, from edition 15 to 20, making it possible to study several time series. Focusing our attention on FIFA 20, there are 104 different variables to be explored; among them:
+- Personal characteristics of the players (dates of birth, salaries, nationalities)
+- Information about clubs and national teams (country, value)
+- Statistics of the players's attributes (skills, kicking power, launch accuracy)
 
 ### Built With
 
@@ -39,7 +44,7 @@ $ pip install -r requirements.txt
 ```sh
 $ python app.py
 ```
-2. Open your browser and go to this adreess: `http://127.0.0.1:5000/`
+2. Open your browser and go to this adress: `http://127.0.0.1:5000/`
 
 ## Demonstration video
 
