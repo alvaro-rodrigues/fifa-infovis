@@ -1,1 +1,11 @@
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. In gravida varius purus id dapibus. Mauris hendrerit a purus porttitor venenatis. Donec lobortis sem ut nisl tristique egestas. Phasellus tempor, nulla a tincidunt suscipit, magna ipsum iaculis tortor, in consectetur ante velit vitae turpis. Suspendisse et mattis nisl. Nam in tellus fringilla, maximus leo eget, condimentum justo. Donec a eros nisl. Duis porttitor in mauris vitae posuere. Praesent hendrerit dui velit, ac iaculis nulla sagittis nec. Nunc molestie dolor non nisl eleifend dignissim. Phasellus ultricies sagittis dictum. 
+Como existem muitos jogadores por edições, optamos por avaliar a correlação entre as features dos jogadores do FIFA 20. Foi escolhida a medida de correlação de spearman como métrica de correlação, devido a sua capacidade de captar correlações não lineares. 
+
+A técnica para visualização escolhida foi um heatmap pois ele permite visualizar múltiplas correlações em pouco espaço e além disso usa as cores como atributo pré atentivo. O principal problema em se usar heatmaps é a ausência de precisão em apresentar correlações como cores, por conta disso optamos por apresentar o heatmap com valores em suas células.
+
+- A partir do heatmap da matriz de correlação é possível notar uma correlação positiva entre height_cm(altura) e weight_kg, o que é totalmente esperado, mais precisamente uma correlação de spearman de 0.77 .
+
+- Os atributos de defesa: defending, defending_marking, defending_standing_tackle, defending_sliding_tackle  são altamente correlacionados entre si, defending_marking é a defesa para marcação, defending_standing_tackle a defesa para jogo de corpo, defending_sliding_tackle defesa para carrinhos e defending_marking defesa de marcação. Sendo mais específico todos estes atributos têm correlação superior a 0.9 entre si. 
+
+- Além disto, mentality_interceptions é altamente correlacionado com os 4 atributos de defesa já citados. O atributo mentality_interceptions é sobre à leitura de jogo de cada jogador, por exemplo se um jogador adversário se aproxima estendendo a perna em sua direção o jogador com uma mentality inteception boa, perceberá que o adversário está tentando interceptar a bola.
+
+- Temos que overall é altamente correlacionado positivamente com value(valor) e wage(salário), que faz todo sentido pois um jogador bom na sua posição principal tende a ter melhor remuneração e maior valor.

@@ -98,7 +98,7 @@ layout = [
                             color="dark",
                         ),
                         dbc.Collapse(
-                            dbc.Card(dbc.CardBody(descs[1])),
+                            dbc.Card(dbc.CardBody(dcc.Markdown(descs[1])), style={"font-size": "16px"}),
                             id="collapse1",
                         )
                     ],
@@ -113,7 +113,7 @@ layout = [
                             color="dark",
                         ),
                         dbc.Collapse(
-                            dbc.Card(dbc.CardBody(descs[2])),
+                            dbc.Card(dbc.CardBody(dcc.Markdown(descs[2])), style={"font-size": "16px"}),
                             id="collapse2",
                         )
                     ],
@@ -141,7 +141,7 @@ for i in range(3, 12):
                             color="dark",
                         ),
                         dbc.Collapse(
-                            dbc.Card(dbc.CardBody(descs[3])),
+                            dbc.Card(dbc.CardBody(dcc.Markdown(descs[i])), style={"font-size": "16px"}),
                             id="collapse" + str(i),
                         )
                     ],
